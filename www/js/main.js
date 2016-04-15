@@ -57,6 +57,8 @@ $(function() {
 				{
 					$("#"+i).spectrum({
 						preferredFormat: "hex",
+						allowEmpty:false,
+						clickoutFiresChange: true,
 						color: $("#"+i).val()
 					});
 				}
@@ -83,7 +85,7 @@ $(function() {
 	
 	$("#o_color,#o_color1,#o_color2, #f_color,#o_color3, #f_color3,#f_color2,#f_color1,#g_color1,#g_color2,#g_color3,#g_color4,#glow_color1,#glow_color2,#glow_color3,#background_color").spectrum({
 		preferredFormat: "hex",
-		allowEmpty:true,
+		allowEmpty:false,
 		clickoutFiresChange: true
 	});
 	
@@ -167,6 +169,8 @@ $(function() {
 						 console.log(i+".........."+$("#"+i).val());
 						$("#"+i).spectrum({
 							preferredFormat: "hex",
+							allowEmpty:false,
+							clickoutFiresChange: true,
 							color: $("#"+i).val()
 						});
 					}
