@@ -1,0 +1,147 @@
+<!DOCTYPE HTML>
+<?php 
+include 'main.php';
+?>
+<html>
+<head>
+<style>
+.ui-spinner,.sp-preview,.sp-replacer
+{
+	width:100%;
+	border-radius:4px;
+}
+
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title> SriHost: Gradient Text Maker </title>
+
+<meta name="description" content= "Ever dreamt of creating Gradient Text? now its as easy as filling out the form,just enter the text ,select Text size,choose font style,choose gradient colors,Check preview...thats it you are done,,, your gradient text is ready to download"/>
+
+<meta name="keywords" content = "gradient,colors,graphics,text,generator,maker"/>
+
+</head>
+<body>
+<div class="container-fluid">
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Text Animator</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Page 1</a></li>
+      <li><a href="#">Page 2</a></li> 
+      <li><a href="#">Page 3</a></li> 
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="row">
+	<div class="col-sm-4">
+	<div class="panel panel-primary">
+        <div class="panel-heading">Gradient Text</div>
+        <div class="panel-body">
+            <form style="">
+						    <div class="form-group">
+                    <label>Logo Text</label>
+                    <input class="form-control" type="text" id="text" name="text" type="text" value="<?php echo $_SESSION['text'];?>"/>
+                </div>
+                <div class="form-group">
+                    <label>Font</label>
+					<img id="font_image"  src="im/fonts/font_images/<?php if (!empty($_POST["font_name"])){ echo $_POST["font_name"]; }else{ echo str_replace(".ttf","",$_SESSION['font_name']);}?>.png" width="242px" height="57px">
+					<div id="font_name">
+						<input  id="font" name="font" type="hidden" value="<?php if (!empty($_POST["font_name"])){ echo $_POST["font_name"].'.ttf'; }else{ echo $_SESSION['font_name'];}?>" disabled />	
+					</div>
+                </div>
+				
+				<div class="form-group">
+                    <label>Animal Image</label>
+					<img class="my_animal_image" src="im/animal_images/<?php if (!empty($_POST["animal_name"])){ echo $_POST["animal_name"]; }else{ echo str_replace(".jpg","",$_SESSION['animal_name']);}?>.jpg" width="242px" height="57px">
+					<div id="animal_image">
+						<input  id="animal" name="animal" type="hidden" value="<?php if (!empty($_POST["animal_name"])){ echo $_POST["animal_name"]; }else{ echo str_replace(".jpg","", $_SESSION['animal_name']);}?>.jpg" disabled />	
+					</div>
+                </div>
+				
+				
+				
+								
+								
+								
+				<div class="form-group">
+					<label>Image Width</label>
+						<input id="image_width" class="form-control" name="image_width" type="text"  value="<?php echo $_SESSION["image_width"];?>" data-slider-step="5" data-slider-snap="true" data-slider="true" data-slider-range="-350,350" maxlength="3" />
+				</div>
+				<div class="form-group">
+				<label>Image Height</label>
+						<input id="image_height" class="form-control" name="image_height" type="text"  value="<?php echo $_SESSION["image_height"];?>" data-slider-step="5" data-slider-snap="true" data-slider="true" data-slider-range="-350,350" maxlength="3" />
+				</div>
+				<div class="form-group">
+				<label>Text Size</label>
+                                	<input id="t_size" class="form-control" name="t_size" type="text" value="<?php echo $_SESSION["t_size"];?>" data-slider-step="10" data-slider-snap="true" data-slider="true" data-slider-range="20,350" maxlength="3" />
+				</div>
+				<div class="form-group">
+				<label>Outline Color</label>	 
+				<span id="colorSelector3"><input  type="text" id="o_color" name="o_color" value="" style="width:50%;-moz-border-radius: 75px;-webkit-border-radius:75px;border-radius: 75px;"/></span>	
+				</div>
+				
+				<div class="form-group">
+				<label>Outline size</label>
+                <input id="o_width" class="form-control" name="o_width" type="text" value="" data-slider-step="10" data-slider-snap="true" data-slider="true" data-slider-range="20,350" maxlength="3" />
+				</div>
+
+				<div class="form-group"><label>Format</label>	 
+									  <select class="form-control" id="format" name="format">
+									  <option value="gif">Gif (Recomended)</option>
+									  <option value="png">PnG</option>
+									  <option value="jpg">Jpg</option>
+									  </select>
+				</div>
+				
+			
+			</form>
+        </div>
+        <div class="panel-footer">
+            <div class="text-right">
+                <button type="button" id="download_me" class="btn btn-danger"><a id="download_fast" href="download.php?file=<?php require $myurl;?>">DownLoad</a></button>
+											
+            </div>
+        </div>
+    </div>
+	 </div>
+	 	<div class="col-sm-8">
+		<div class="col-sm-12">
+		<div class="row">
+				<div class="panel panel-primary">
+					<div class="panel-heading subContainer eheight">Preview</div>
+                      
+							<div id="previewArea" class="previewArea" style="padding-top:15px;">
+						
+                            </div>
+                        
+					<div class="panel-footer">
+						<div class="text-right">
+							<button type="button" class="btn btn-danger">Download</button>
+							<button type="button" class="btn btn-success">Reset</button>
+						</div>
+					</div>
+				</div>
+		</div>
+		</div>
+	</div>
+	 </div>
+	 
+	 
+
+</div>
+
+<div class="row" style="padding-top:50px;">
+  <div class="panel-footer container-fluid navbar-fixed-bottom">
+    <div class="text-center">SriHost © 2016 Srinivas. All Rights Reserved.</div>
+  </div>
+</div>
+</div> 
+</body>
+</html>
